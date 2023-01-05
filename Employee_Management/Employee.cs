@@ -8,21 +8,29 @@ namespace Employee_Management
 {
     public class Employee
     {
-        public static void UC1Attendence()
+        public static void UC2EmployeeWage()
         {
 
-            int IsPresent = 1;
+
+            int Fulltime = 1;
+            int emp_hrs = 0;
+            int empWage = 20;
+
             Random random = new Random();
-            int empcheck = random.Next(0, 2);
-            if (empcheck == IsPresent)
+            int empcheck = random.Next(1, 3);
+
+            if (empcheck == Fulltime)
             {
-                Console.WriteLine("Employee is present");
+                emp_hrs = 8;
+
             }
             else
             {
-                Console.WriteLine("Employee is absent");
-            }
+                emp_hrs = 0;
 
+            }
+            emp_hrs = emp_hrs * empWage;
+            Console.WriteLine("Daily employee wage :" + emp_hrs);
         }
     }
 }
