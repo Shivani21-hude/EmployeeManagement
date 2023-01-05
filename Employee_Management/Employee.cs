@@ -8,35 +8,35 @@ namespace Employee_Management
 {
     public class Employee
     {
-        public static void UC3PartTime()
+
+        public const int isFullTime = 1;
+        public const int isPartTime = 2;
+        public const int Emp_Rate_per_hour = 20;
+        public static void UC4Switchcase()
         {
 
-
-            int Fulltime = 1;
-            int PartTime = 2;
             int emp_hrs = 0;
-            int Emp_rate_per_hour = 20;
-            int empwage = 0;
+            int EmpWage = 0;
 
             Random random = new Random();
             int empcheck = random.Next(0, 3);
-
-            if (empcheck == Fulltime)
+            switch (empcheck)
             {
-                emp_hrs = 8;
+                case isFullTime:
+                    emp_hrs = 8;
+                    break;
+
+                case isPartTime:
+                    emp_hrs = 4;
+                    break;
+
+                default:
+                    emp_hrs = 0;
+                    break;
 
             }
-            if else(empcheck==PartTime)
-            {
-                emp_hrs = 4;
-            }
-            else
-            {
-                emp_hrs = 0;
-
-            }
-            empwage = emp_hrs * Emp_rate_per_hour;
-            Console.WriteLine("Daily employee wage :" + empwage);
+            EmpWage = emp_hrs * Emp_Rate_per_hour;
+            Console.WriteLine("Employee Daily Wage is : " + EmpWage);
         }
     }
 }
