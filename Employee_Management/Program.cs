@@ -8,7 +8,7 @@ namespace EmployeeManagement
         {
             Console.WriteLine("Welcome to Employee Wage Management \n");
 
-            Employee.Uc5MonthlyWage();
+            Employee.Uc6TotalWage();
 
 
         }

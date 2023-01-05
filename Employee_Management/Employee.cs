@@ -13,13 +13,15 @@ namespace Employee_Management
         public const int isPartTime = 2;
         public const int Emp_Rate_per_hour = 20;
         public const int num_of_working_days = 20;
-        public static void Uc5MonthlyWage()
+        public const int max_hrs_in_month = 100;
+        public static void Uc6TotalWage()
         {
             int emp_hrs = 0;
             int EmpWage = 0;
-            int totalempwage = 0;
-            for (int day = 1; day <= num_of_working_days; day++)
+            int totalempwage = 0, totalworkingdays = 0, totalempHrs = 0;
+            while (totalempHrs <= max_hrs_in_month && totalworkingdays < num_of_working_days)
             {
+                totalworkingdays++;
 
                 Random random = new Random();
                 int empcheck = random.Next(0, 3);
@@ -38,12 +40,12 @@ namespace Employee_Management
                         break;
 
                 }
-                EmpWage = emp_hrs * Emp_Rate_per_hour;
-                totalempwage += EmpWage;
-                Console.WriteLine("Day :" + day + "  employee wage :" + EmpWage);
+                totalempHrs += emp_hrs;
+                Console.WriteLine("Day:" + totalworkingdays + "Employee hrs : " + emp_hrs);
             }
+            totalempwage = totalempHrs * Emp_Rate_per_hour;
+            Console.WriteLine("Total employee wage is: " + totalempwage);
 
-            Console.WriteLine("Total emp wage : " + totalempwage);
         }
 
     }
