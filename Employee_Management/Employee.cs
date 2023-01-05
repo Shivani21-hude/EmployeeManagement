@@ -12,31 +12,39 @@ namespace Employee_Management
         public const int isFullTime = 1;
         public const int isPartTime = 2;
         public const int Emp_Rate_per_hour = 20;
-        public static void UC4Switchcase()
+        public const int num_of_working_days = 20;
+        public static void Uc5MonthlyWage()
         {
-
             int emp_hrs = 0;
             int EmpWage = 0;
-
-            Random random = new Random();
-            int empcheck = random.Next(0, 3);
-            switch (empcheck)
+            int totalempwage = 0;
+            for (int day = 1; day <= num_of_working_days; day++)
             {
-                case isFullTime:
-                    emp_hrs = 8;
-                    break;
 
-                case isPartTime:
-                    emp_hrs = 4;
-                    break;
+                Random random = new Random();
+                int empcheck = random.Next(0, 3);
+                switch (empcheck)
+                {
+                    case isFullTime:
+                        emp_hrs = 8;
+                        break;
 
-                default:
-                    emp_hrs = 0;
-                    break;
+                    case isPartTime:
+                        emp_hrs = 4;
+                        break;
 
+                    default:
+                        emp_hrs = 0;
+                        break;
+
+                }
+                EmpWage = emp_hrs * Emp_Rate_per_hour;
+                totalempwage += EmpWage;
+                Console.WriteLine("Day :" + day + "  employee wage :" + EmpWage);
             }
-            EmpWage = emp_hrs * Emp_Rate_per_hour;
-            Console.WriteLine("Employee Daily Wage is : " + EmpWage);
+
+            Console.WriteLine("Total emp wage : " + totalempwage);
         }
+
     }
 }
