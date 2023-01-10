@@ -14,10 +14,11 @@ namespace Employee_Management
         public const int Emp_Rate_per_hour = 20;
         public const int num_of_working_days = 20;
         public const int max_hrs_in_month = 100;
-        public static void Uc6TotalWage()
+
+        public static int ComputeEmpWage()
         {
             int emp_hrs = 0;
-            int EmpWage = 0;
+            
             int totalempwage = 0, totalworkingdays = 0, totalempHrs = 0;
             while (totalempHrs <= max_hrs_in_month && totalworkingdays < num_of_working_days)
             {
@@ -45,7 +46,7 @@ namespace Employee_Management
             }
             totalempwage = totalempHrs * Emp_Rate_per_hour;
             Console.WriteLine("Total employee wage is: " + totalempwage);
-
+            return totalempHrs;
         }
 
     }
