@@ -11,11 +11,8 @@ namespace Employee_Management
 
         public const int isFullTime = 1;
         public const int isPartTime = 2;
-        public const int Emp_Rate_per_hour = 20;
-        public const int num_of_working_days = 20;
-        public const int max_hrs_in_month = 100;
-
-        public static int ComputeEmpWage()
+       
+        public static int ComputeEmpWage(string company,int Emp_Rate_per_hour,int num_of_working_days,int max_hrs_in_month)
         {
             int emp_hrs = 0;
             
@@ -45,7 +42,7 @@ namespace Employee_Management
                 Console.WriteLine("Day:" + totalworkingdays + "Employee hrs : " + emp_hrs);
             }
             totalempwage = totalempHrs * Emp_Rate_per_hour;
-            Console.WriteLine("Total employee wage is: " + totalempwage);
+            Console.WriteLine("Total employee wage for " +company + " is : " + totalempwage);
             return totalempHrs;
         }
 
