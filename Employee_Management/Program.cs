@@ -8,13 +8,15 @@ namespace EmployeeManagement
         {
             Console.WriteLine("Welcome to Employee Wage Management \n");
 
-            Employee dmart = new Employee("Dmart", 20, 20, 100);
-            Employee reliance = new Employee("Reliance", 25, 15, 80);
-            dmart.ComputeEmpWage();
-             reliance.ComputeEmpWage();
+            EmpWageBuilderArray empWageBuilderArray = new EmpWageBuilderArray();
+            empWageBuilderArray.addCompanyEmpWage("Dmart", 20, 20, 100);
+            empWageBuilderArray.addCompanyEmpWage("Reliance", 25, 15, 80);
+            empWageBuilderArray.addCompanyEmpWage("Textile", 25, 18, 70);
+            empWageBuilderArray.addCompanyEmpWage("TCS", 25, 22, 110);
 
-            Console.WriteLine(dmart.toString());
-            Console.WriteLine(reliance.toString());
+           empWageBuilderArray.ComputeEmpWage();
+          
+
         }
     }
 }

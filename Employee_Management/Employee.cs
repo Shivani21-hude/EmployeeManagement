@@ -6,30 +6,66 @@ using System.Threading.Tasks;
 
 namespace Employee_Management
 {
-    public class Employee
+    public class CompanyEmpWage
     {
 
-        public const int isFullTime = 1;
-        public const int isPartTime = 2;
-        private string company;
-        private int Emp_Rate_per_hour;
-        private int  num_of_working_days;
-        private int max_hrs_in_month;
-        private int totalempwage;
-        public Employee(string company, int emp_Rate_per_hour, int num_of_working_days, int max_hrs_in_month)
+        public string company;
+        public int Emp_Rate_per_hour;
+        public int num_of_working_days;
+        public int max_hrs_in_month;
+        public int totalempwage;
+        public CompanyEmpWage(string company, int emp_Rate_per_hour, int num_of_working_days, int max_hrs_in_month)
         {
             this.company = company;
             this.Emp_Rate_per_hour = emp_Rate_per_hour;
             this.num_of_working_days = num_of_working_days;
             this.max_hrs_in_month = max_hrs_in_month;
         }
+        public void setTotalEmpWage(int totalempwage)
+        {
+            this.totalempwage = totalempwage;
+        }
+        public string toString()
+        {
+            return "Total wage for company " + this.company + " is " + this.totalempwage;
+        }
+    }
+    //Calculating emp wage for multiple companies using array:
+
+    public class EmpWageBuilderArray
+    {
+        public const int isFullTime = 1;
+        public const int isPartTime = 2;
+
+        private int numofCompany = 0;
+        private CompanyEmpWage[] companyEmpWageArray;
+
+
+        public EmpWageBuilderArray()
+        {
+            this.companyEmpWageArray = new CompanyEmpWage[5];
+        }
+
+        public void addCompanyEmpWage(string company,int Emp_Rate_per_hour,int num_of_working_days,int max_hrs_in_month)
+        {
+            companyEmpWageArray[this.numofCompany]=new CompanyEmpWage(company,Emp_Rate_per_hour,num_of_working_days,max_hrs_in_month);
+            numofCompany++;
+        }
 
         public void ComputeEmpWage()
         {
+            for (int i = 0; i < numofCompany; i++)
+            {
+                companyEmpWageArray[i].setTotalEmpWage(this.ComputeEmpWage(this.companyEmpWageArray[i]));
+                Console.WriteLine(this.companyEmpWageArray[i].toString());
+            }
+        }
+        private int ComputeEmpWage(CompanyEmpWage companyEmpWage)
+        {
             int emp_hrs = 0;
-            
+
             int totalworkingdays = 0, totalempHrs = 0;
-            while (totalempHrs <= max_hrs_in_month && totalworkingdays < num_of_working_days)
+            while (totalempHrs <= companyEmpWage.max_hrs_in_month && totalworkingdays < companyEmpWage.num_of_working_days)
             {
                 totalworkingdays++;
 
@@ -53,13 +89,7 @@ namespace Employee_Management
                 totalempHrs += emp_hrs;
                 Console.WriteLine("Day:" + totalworkingdays + "Employee hrs : " + emp_hrs);
             }
-            totalempwage = totalempHrs * Emp_Rate_per_hour;
-            Console.WriteLine("Total employee wage for " +company + " is : " + totalempwage);
-           
-        }
-        public string toString()
-        {
-            return "Total wage for company " + this.company + " is " + this.totalempwage;
+            return totalempHrs * companyEmpWage.Emp_Rate_per_hour;
         }
 
     }
