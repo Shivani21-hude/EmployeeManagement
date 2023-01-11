@@ -11,12 +11,24 @@ namespace Employee_Management
 
         public const int isFullTime = 1;
         public const int isPartTime = 2;
-       
-        public static int ComputeEmpWage(string company,int Emp_Rate_per_hour,int num_of_working_days,int max_hrs_in_month)
+        private string company;
+        private int Emp_Rate_per_hour;
+        private int  num_of_working_days;
+        private int max_hrs_in_month;
+        private int totalempwage;
+        public Employee(string company, int emp_Rate_per_hour, int num_of_working_days, int max_hrs_in_month)
+        {
+            this.company = company;
+            this.Emp_Rate_per_hour = emp_Rate_per_hour;
+            this.num_of_working_days = num_of_working_days;
+            this.max_hrs_in_month = max_hrs_in_month;
+        }
+
+        public void ComputeEmpWage()
         {
             int emp_hrs = 0;
             
-            int totalempwage = 0, totalworkingdays = 0, totalempHrs = 0;
+            int totalworkingdays = 0, totalempHrs = 0;
             while (totalempHrs <= max_hrs_in_month && totalworkingdays < num_of_working_days)
             {
                 totalworkingdays++;
@@ -43,7 +55,11 @@ namespace Employee_Management
             }
             totalempwage = totalempHrs * Emp_Rate_per_hour;
             Console.WriteLine("Total employee wage for " +company + " is : " + totalempwage);
-            return totalempHrs;
+           
+        }
+        public string toString()
+        {
+            return "Total wage for company " + this.company + " is " + this.totalempwage;
         }
 
     }
